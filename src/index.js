@@ -32,4 +32,5 @@ const splitHost = host => {
   return { host, hostname: host }
 }
 
-export { splitHost as default }
+module.exports = splitHost
+exports.default = splitHost
