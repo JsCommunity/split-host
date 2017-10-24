@@ -5,6 +5,7 @@ import splitHost from './'
 describe('splitHost()', () => {
   it('splits host into hostname and port', () => {
     expect(splitHost('localhost:80')).toEqual({
+      host: 'localhost',
       hostname: 'localhost',
       port: 80
     })
@@ -12,6 +13,7 @@ describe('splitHost()', () => {
 
   it('identifies lone hostname', () => {
     expect(splitHost('localhost')).toEqual({
+      host: 'localhost',
       hostname: 'localhost'
     })
   })
@@ -20,5 +22,9 @@ describe('splitHost()', () => {
     expect(splitHost('80')).toEqual({
       port: 80
     })
+  })
+
+  it('returns undefined if parameter is undefined', () => {
+    expect(splitHost()).toBe(undefined)
   })
 })
