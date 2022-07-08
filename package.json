@@ -20,67 +20,32 @@
     "name": "Julien Fontanet",
     "email": "julien.fontanet@isonoe.net"
   },
-  "preferGlobal": false,
-  "main": "dist/",
-  "bin": {},
-  "files": [
-    "dist/"
-  ],
   "engines": {
     "node": ">=4"
   },
-  "dependencies": {},
+  "files": [
+    "./index.js"
+  ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-preset-env": "^1.6.1",
-    "cross-env": "^5.1.0",
-    "dependency-check": "^2.9.1",
-    "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "rimraf": "^2.6.2",
-    "standard": "^10.0.3"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint": "^8.19.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "tap": "^16.3.0"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production babel --source-maps --out-dir=dist/ src/",
-    "commitmsg": "npm test",
-    "dev": "cross-env NODE_ENV=development babel --watch --source-maps --out-dir=dist/ src/",
-    "dev-test": "jest --bail --watch",
-    "posttest": "standard && dependency-check ./package.json",
-    "prebuild": "rimraf dist/",
-    "predev": "npm run prebuild",
-    "prepublish": "npm run build",
-    "test": "jest"
+    "prepare": "husky install",
+    "test": "tap"
   },
-  "babel": {
-    "env": {
-      "test": {
-        "ignore": null
-      }
-    },
-    "ignore": "*.spec.js",
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": 4
-          }
-        }
-      ]
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --ignore-pattern '!*'"
     ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "testRegex": "\\.spec\\.js$"
-  },
-  "standard": {
-    "ignore": [
-      "dist"
-    ],
-    "parser": "babel-eslint"
   }
 }
