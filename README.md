@@ -23,6 +23,14 @@ splitHost("localhost");
 
 splitHost("80");
 // → { port: 80 }
+
+// IPv6 addresses must be enclosed in []
+
+splitHost("[::1]:80");
+// → { host: '::1', hostname: '::1', port: '80' }
+
+splitHost("[::1]");
+// → { host: '::1', hostname: '::1' }
 ```
 
 > `host` is provided as an alias for `hostname` because a lot of

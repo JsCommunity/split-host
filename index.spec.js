@@ -40,4 +40,22 @@ describe("splitHost()", () => {
   it("returns undefined if parameter is undefined", () => {
     assert.strictEqual(splitHost(), undefined);
   });
+
+  it("properly handles lone IPv6", () => {
+    const hostname = "3ee3:9606:f05d:9624:a995:f68a:05b3:1440";
+    assert.deepStrictEqual(splitHost("[" + hostname + "]"), {
+      host: hostname,
+      hostname,
+    });
+  });
+
+  it("properly handles IPv6 with port", () => {
+    const hostname = "3ee3:9606:f05d:9624:a995:f68a:05b3:1440";
+    const port = 80;
+    assert.deepStrictEqual(splitHost("[" + hostname + "]:" + port), {
+      host: hostname,
+      hostname,
+      port,
+    });
+  });
 });

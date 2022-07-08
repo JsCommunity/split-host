@@ -23,10 +23,16 @@ module.exports = function splitHost(host) {
     return isPort(port) ? { port } : { host, hostname: host };
   }
 
+  const isIpv6 = host[0] === "[";
+
   const port = +host.slice(i + 1);
   if (isPort(port)) {
-    const hostname = host.slice(0, i);
+    const hostname = isIpv6 ? host.slice(1, i - 1) : host.slice(0, i);
     return { host: hostname, hostname, port };
+  }
+
+  if (isIpv6) {
+    host = host.slice(1, -1);
   }
 
   return { host, hostname: host };
