@@ -1,4 +1,6 @@
-# split-host [![Build Status](https://travis-ci.org/JsCommunity/split-host.png?branch=master)](https://travis-ci.org/JsCommunity/split-host)
+# split-host
+
+[![Package Version](https://badgen.net/npm/v/split-host)](https://npmjs.org/package/split-host) ![License](https://badgen.net/npm/license/split-host) [![PackagePhobia](https://badgen.net/bundlephobia/minzip/split-host)](https://bundlephobia.com/result?p=split-host) [![Node compatibility](https://badgen.net/npm/node/split-host)](https://npmjs.org/package/split-host)
 
 > Split host into hostname and port
 
